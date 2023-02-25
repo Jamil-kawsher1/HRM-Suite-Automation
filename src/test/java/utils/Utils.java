@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class Utils {
     //This Method will use to store User data as json object List
-    public static void addJosnList (String username, String password, String firstname, String lastname) throws IOException, ParseException {
+    public static void addJsonList (String username, String password, String firstname, String lastname) throws IOException, ParseException {
         String fileName = "./src/test/resources/EmployeeList.json";
         JSONParser jsonParser = new JSONParser();
         Object obj = jsonParser.parse(new FileReader(fileName));
@@ -31,7 +31,11 @@ public class Utils {
 
     }
 
+    public static int randomNumber(){
+        return (int) Math.round(Math.random()*5000);
+    }
+
     public static void main (String[] args) throws IOException, ParseException {
-        addJosnList("jamil0777", "123", "Jamil", "Kawsher");
+//        addJosnList("jamil0777", "123", "Jamil", "Kawsher");
     }
 }

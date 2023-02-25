@@ -19,10 +19,10 @@ public class PimPage {
 
     //add employe first name
     @FindBy(name = "firstName")
-    WebElement firstname;
+    WebElement firstnamef;
     //add employee  lastName
     @FindBy(name = "lastName")
-    WebElement lastname;
+    WebElement lastnamef;
 
     //add employee page toggle button
     @FindBy(className = "oxd-switch-input")
@@ -56,19 +56,19 @@ public class PimPage {
 
     //add employee steps method
 
-    public void addEmployee () throws InterruptedException {
+    public void addEmployee (String firstname,String lastname,String username,String password) throws InterruptedException {
 //filling us first name last name filed
-        firstname.sendKeys("Test");
-        lastname.sendKeys("User");
+        firstnamef.sendKeys(firstname);
+        lastnamef.sendKeys(lastname);
         //clicking on Toggle button to expand and create Login details
         btnToggle.click();
         Thread.sleep(1000);
 //username field
-        loginDetailsFields.get(5).sendKeys("test0777");
+        loginDetailsFields.get(5).sendKeys(username);
 //password filed
-        loginDetailsFields.get(6).sendKeys("Password@!1");
+        loginDetailsFields.get(6).sendKeys(password);
 //confirm password
-        loginDetailsFields.get(7).sendKeys("Password@!1");
+        loginDetailsFields.get(7).sendKeys(password);
 
         Thread.sleep(1000);
 
