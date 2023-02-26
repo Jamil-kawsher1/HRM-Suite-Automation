@@ -60,6 +60,7 @@ public class PimPage {
 //filling us first name last name filed
         firstnamef.sendKeys(firstname);
         lastnamef.sendKeys(lastname);
+        Thread.sleep(1000);
         //clicking on Toggle button to expand and create Login details
         btnToggle.click();
         Thread.sleep(1000);

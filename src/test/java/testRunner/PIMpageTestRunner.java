@@ -53,5 +53,7 @@ public class PIMpageTestRunner extends Setup {
         String title_expected = "Personal Details";
         Assert.assertEquals(tiitle_actual, title_expected);
         Utils.addJsonList(username,password,firstname,lastname);
+
+        Thread.sleep(3000);
     }
 }

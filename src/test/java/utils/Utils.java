@@ -53,8 +53,31 @@ public class Utils {
 
     }
 
+    public static void updateJSONFileObjectProperty(String filename,int index,String propertyname,String updatedvalue) throws IOException, ParseException {
+
+        JSONParser jsonParser = new JSONParser();
+        Object obj = jsonParser.parse(new FileReader(filename));
+        JSONArray jsonArray = (JSONArray) obj;
+        int arraySize=jsonArray.size();
+        int arrayIn=arraySize-index;
+        // Get the JSON object at the specific index
+        JSONObject jsonObject = (JSONObject) jsonArray.get(arrayIn);
+
+        System.out.println(jsonObject);
+        // Update the property value of the object
+        jsonObject.put(propertyname, updatedvalue);
+        // Convert the JSON array back to a JSON string
+        System.out.println("updfated "+jsonObject);
+        String updatedJsonString = jsonArray.toJSONString();
+        // Write the updated JSON string back to the original JSON file
+        try (FileWriter fileWriter = new FileWriter(filename)) {
+            fileWriter.write(updatedJsonString);
+        }
+    }
+
     public static void main (String[] args) throws IOException, ParseException {
 
-//        System.out.println( readJSONFile("./src/test/resources/EmployeeList.json",1));
+        System.out.println( readJSONFile("./src/test/resources/EmployeeList.json",2));
+//        updateJSONFileObjectProperty("./src/test/resources/EmployeeList.json",1,"username","badhontest");
     }
 }
