@@ -35,7 +35,26 @@ public class Utils {
         return (int) Math.round(Math.random()*5000);
     }
 
+    public static JSONObject readJSONFile(String filename,int index) throws IOException, ParseException {
+
+
+        JSONParser jsonParser = new JSONParser();
+        Object obj = jsonParser.parse(new FileReader(filename));
+        JSONArray jsonArray = (JSONArray) obj;
+       int arraySize=jsonArray.size();
+       int arrayIn=arraySize-index;
+
+        JSONObject    arryObject= (JSONObject) jsonArray.get(arrayIn);
+
+        
+        return arryObject;
+
+
+
+    }
+
     public static void main (String[] args) throws IOException, ParseException {
-//        addJosnList("jamil0777", "123", "Jamil", "Kawsher");
+
+//        System.out.println( readJSONFile("./src/test/resources/EmployeeList.json",1));
     }
 }

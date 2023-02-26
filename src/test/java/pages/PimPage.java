@@ -11,7 +11,7 @@ public class PimPage {
 
     //Dashboard manue List
     @FindBy(className = "oxd-main-menu-item-wrapper")
-    List<WebElement> manueList;
+  public  List<WebElement> manueList;
 
     //butoons
     @FindBy(className = "oxd-button--secondary")
@@ -75,4 +75,6 @@ public class PimPage {
         //clicking on Save employee button
         employeeInfoSaveBtn.click();
     }
+
+
 }
