@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.AdminPage;
 import pages.LoginPage;
+import pages.PimPage;
 import setup.Setup;
 import utils.Utils;
 
@@ -57,4 +58,29 @@ public class AdminPageTestRunner extends Setup {
 
         Assert.assertTrue(titleActual.contains(titleexpected));
     }
+
+    @Test(priority = 4, description = "LogOut from admin dashboard")
+    public void doLogout () throws InterruptedException {
+        AdminPage admin = new AdminPage(driver);
+        admin.doLogout();
+
+    }
+
+@Test(priority = 5)
+    public void doLoginWith2ndUser () throws IOException, ParseException, InterruptedException {
+        LoginPage login = new LoginPage(driver);
+        Thread.sleep(500);
+        String username = (String) Utils.readJSONFile("./src/test/resources/EmployeeList.json", 1).get("username");
+        String password = (String) Utils.readJSONFile("./src/test/resources/EmployeeList.json", 1).get("password");
+        Thread.sleep(500);
+        login.doLogin(username, password);
+
+    }
+@Test(priority = 6)
+   public void userContactOtherInfoUpdate() throws InterruptedException {
+AdminPage adminPage=new AdminPage(driver);
+adminPage.userContactOtherInfoUpdate();
+
+
+   }
 }

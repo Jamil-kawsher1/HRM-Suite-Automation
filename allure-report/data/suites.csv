@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Feb 27 00:51:19 BDT 2023","Mon Feb 27 00:51:38 BDT 2023","18965","Orange HRM Portal Automation","Employee page test","testRunner.PIMpageTestRunner","testRunner.PIMpageTestRunner","addEmployee","add Employee ",""
+"passed","Mon Feb 27 00:52:14 BDT 2023","Mon Feb 27 00:52:24 BDT 2023","10038","Orange HRM Portal Automation","Searh Employeee ","testRunner.AdminPageTestRunner","testRunner.AdminPageTestRunner","researchingUserWithUpdatedUsername","Reseraching User With updated userid",""
+"passed","Mon Feb 27 00:51:45 BDT 2023","Mon Feb 27 00:51:57 BDT 2023","11066","Orange HRM Portal Automation","Searh Employeee ","testRunner.AdminPageTestRunner","testRunner.AdminPageTestRunner","searchUserInfo","Search User Info",""
+"passed","Mon Feb 27 00:50:50 BDT 2023","Mon Feb 27 00:50:52 BDT 2023","1948","Orange HRM Portal Automation","Orange HRM portal login test","testRunner.LoginPageTestRunner","testRunner.LoginPageTestRunner","doLogin","Login With valid Credential",""
+"passed","Mon Feb 27 00:51:57 BDT 2023","Mon Feb 27 00:52:14 BDT 2023","17289","Orange HRM Portal Automation","Searh Employeee ","testRunner.AdminPageTestRunner","testRunner.AdminPageTestRunner","updateUsername","Update User info",""

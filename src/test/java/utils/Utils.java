@@ -63,11 +63,11 @@ public class Utils {
         // Get the JSON object at the specific index
         JSONObject jsonObject = (JSONObject) jsonArray.get(arrayIn);
 
-        System.out.println(jsonObject);
+
         // Update the property value of the object
         jsonObject.put(propertyname, updatedvalue);
         // Convert the JSON array back to a JSON string
-        System.out.println("updfated "+jsonObject);
+
         String updatedJsonString = jsonArray.toJSONString();
         // Write the updated JSON string back to the original JSON file
         try (FileWriter fileWriter = new FileWriter(filename)) {
