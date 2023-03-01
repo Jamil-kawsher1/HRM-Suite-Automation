@@ -11,7 +11,7 @@ import java.time.Duration;
 public class Setup {
     //setting up baisc setup and driver
 
-  public   WebDriver driver;
+    public WebDriver driver;
 
     @BeforeTest
     public void setup () {
@@ -19,14 +19,14 @@ public class Setup {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://opensource-demo.orangehrmlive.com/");
     }
 
     @AfterTest
-    public void close () {
+    public void close () throws InterruptedException {
 
-
-//        driver.close();
+        Thread.sleep(5000);
+        driver.close();
     }
 }

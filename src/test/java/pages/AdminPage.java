@@ -1,6 +1,8 @@
 package pages;
 
+import com.github.javafaker.Faker;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,7 +37,7 @@ public class AdminPage {
     List<WebElement> savebutton;
 
 
-    //user dropdown menue
+    //user dropdown menu
     @FindBy(className = "oxd-userdropdown-tab")
     WebElement userDropdown;
 
@@ -44,8 +46,13 @@ public class AdminPage {
     List<WebElement> dropdownmenuList;
 
     //user menu list myinfo page
-    @FindBy(className = "oxd-main-menu-item")
+    @FindBy(className = "oxd-main-menu-item--name")
     List<WebElement> userMenuList;
+
+    //personal details inner tab like contact details personal details
+    @FindBy(className = "orangehrm-tabs-item")
+    List<WebElement> innertabs;
+
 
     //gender and blood group selection on user info filed at 13 index male in 14 index female nad in 17 index blood group
     @FindBy(className = "oxd-input-field-bottom-space")
@@ -53,9 +60,36 @@ public class AdminPage {
     //gender selection and other lebel selection male at 12 index and female at 12 index
     @FindBy(tagName = "label")
     List<WebElement> genderSelection;
+    //blood group selection
+    @FindBy(className = "oxd-select-text-input")
+    public List<WebElement> bloodgroup;
+    //user info save buttons
+    @FindBy(css = "[type=submit]")
+    List<WebElement> saveButtons;
+
+    //my info sidebar menu list
+    @FindBy(className = "orangehrm-tabs-item")
+    List<WebElement> userinfoMenuList;
+
+    //contact details input fields
+    @FindBy(className = "oxd-input")
+    List<WebElement> contactInputFields;
+    //select country in Contact update page
+    @FindBy(className = "oxd-select-text-input")
+    WebElement countrySelect;
 
     public AdminPage (WebDriver driver) {
         PageFactory.initElements(driver, this);
+    }
+
+    public void searchUserInfoWithInvalidInfo () throws IOException, ParseException, InterruptedException {
+//clicking on Admin page section
+        manueList.get(0).click();
+
+        Thread.sleep(1000);
+        inputField.get(1).sendKeys("invalid243");
+        Thread.sleep(1000);
+        searchBtn.click();
     }
 
     public void searchUserInfo () throws IOException, ParseException, InterruptedException {
@@ -103,11 +137,76 @@ public class AdminPage {
 
     }
 
-    public void userContactOtherInfoUpdate () throws InterruptedException {
+    public void userContactOtherInfoUpdate (WebDriver driver) throws InterruptedException {
         //clicking on My Info tab
         userMenuList.get(2).click();
         Thread.sleep(7000);
+        //clicking on blood group
         genderSelection.get(12).click();
+        Thread.sleep(3000);
+        savebutton.get(0).click();
+        Thread.sleep(1000);
+        Utils.doScroll(driver, 550);
+        Thread.sleep(3000);
+        bloodgroup.get(2).click();
+        Thread.sleep(5000);
+
+        bloodgroup.get(2).sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(500);
+        bloodgroup.get(2).sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(500);
+        bloodgroup.get(2).sendKeys(Keys.ENTER);
+        Thread.sleep(2000);
+        savebutton.get(1).click();
+//        driver.findElement(By.className("oxd-select-dropdown")).sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+
+    }
+
+    public void updateContactAndEmail (WebDriver driver) throws InterruptedException {
+        Utils.doScroll(driver, -550);
+        Thread.sleep(4000);
+        //clicking on contact details
+        innertabs.get(1).click();
+        Thread.sleep(4000);
+        Faker faker = new Faker();
+        String streetAddress = faker.address().streetAddress();
+        String city = faker.address().city();
+        String state = faker.address().state();
+        String zipcode = faker.address().zipCode();
+        String Workemail = faker.internet().emailAddress();
+        String otheremail = faker.internet().emailAddress();
+        //street address
+        contactInputFields.get(1).sendKeys(streetAddress);
+
+        //city
+        contactInputFields.get(3).sendKeys(city);
+
+        //state
+        contactInputFields.get(4).sendKeys(state);
+        //zipcode
+        contactInputFields.get(5).sendKeys(zipcode);
+        Thread.sleep(2000);
+        countrySelect.click();
+        Thread.sleep(500);
+        countrySelect.sendKeys("u");
+        Thread.sleep(500);
+        countrySelect.sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(500);
+        countrySelect.sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(500);
+        countrySelect.sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(500);
+        countrySelect.sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(500);
+        countrySelect.sendKeys(Keys.ENTER);
+        Thread.sleep(2000);
+        //filling up email adderess
+        contactInputFields.get(9).sendKeys(Workemail);
+        contactInputFields.get(10).sendKeys(otheremail);
+
+        Thread.sleep(2000);
+        //saving info
+        searchBtn.click();
     }
 
 

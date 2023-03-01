@@ -24,6 +24,12 @@ public class LoginPage {
     }
 
 
+    public void doLoginWithInvalidCreds(String username,String password){
+        usernamef.sendKeys(username);
+        passwordf.sendKeys(password);
+        btnLogin.click();
+    }
+
     //do login steps
 
     public void doLogin(String username,String password){
@@ -31,4 +37,6 @@ public class LoginPage {
        passwordf.sendKeys(password);
        btnLogin.click();
     }
+
+
 }
